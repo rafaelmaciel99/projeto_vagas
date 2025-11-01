@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+  <a href="{{ url_for('vagas', bus=bus) }}" class="text-sm underline">← Voltar</a>
+  <h1 class="text-xl font-bold mt-2">{{ job.title }}</h1>
+  <p class="text-xs text-gray-500">{{ job.location }} • {{ job.dept }}</p>
+
+  {% if job.description %}
+    <div class="prose prose-sm mt-4 max-w-none"><p>{{ job.description }}</p></div>
+  {% endif %}
+
+  {% if job.requirements %}
+    <div class="mt-4">
+      <h2 class="text-sm font-semibold uppercase text-gray-600">Requisitos</h2>
+      <ul class="list-disc list-inside text-sm text-gray-700 mt-1">
+        {% for r in job.requirements %}<li>{{ r }}</li>{% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <form class="mt-6 bg-white p-4 rounded-lg shadow space-y-3" method="post" enctype="multipart/form-data">
+    <div><label class="text-sm">Nome completo</label>
+      <input required name="nome" class="mt-1 w-full border rounded px-3 py-2" placeholder="Seu nome"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div><label class="text-sm">E-mail</label>
+        <input required type="email" name="email" class="mt-1 w-full border rounded px-3 py-2" placeholder="voce@email.com"></div>
+      <div><label class="text-sm">Telefone/WhatsApp</label>
+        <input required name="telefone" class="mt-1 w-full border rounded px-3 py-2" placeholder="(62) 9 9999-9999"></div>
+    </div>
+    <div><label class="text-sm">Observações</label>
+      <textarea name="obs" class="mt-1 w-full border rounded px-3 py-2" rows="3" placeholder="Mensagem opcional"></textarea></div>
+    <div><label class="text-sm">Currículo (PDF/DOC)</label>
+      <input type="file" name="curriculo" accept=".pdf,.doc,.docx" class="mt-1 w-full"></div>
+    <button class="w-full py-2 rounded bg-black text-white font-semibold">Enviar candidatura</button>
+  </form>
+{% endblock %}

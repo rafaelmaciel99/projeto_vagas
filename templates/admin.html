@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class="text-lg font-bold mb-4">Admin</h1>
+  <div class="text-sm mb-3 space-x-4">
+    <a class="underline" href="{{ url_for('export_csv', k=request.args.get('k')) }}">Baixar CSV de cliques</a>
+    <a class="underline" href="{{ url_for('export_candidatos', k=request.args.get('k')) }}">Baixar CSV de candidatos</a>
+  </div>
+  <h2 class="text-sm font-semibold uppercase text-gray-600 mt-4">Cliques</h2>
+  <div class="overflow-x-auto bg-white rounded-lg shadow mb-6">
+    <table class="min-w-full text-sm"><thead class="bg-gray-50 text-gray-600">
+      <tr><th class="text-left px-4 py-2">Slug</th><th class="text-left px-4 py-2">Cliques</th><th class="text-left px-4 py-2">Primeiro</th><th class="text-left px-4 py-2">Último</th></tr>
+    </thead><tbody>
+      {% for slug, total, first_ts, last_ts in rows_clicks %}
+        <tr class="border-t"><td class="px-4 py-2 font-mono">{{ slug }}</td><td class="px-4 py-2">{{ total }}</td><td class="px-4 py-2">{{ first_ts }}</td><td class="px-4 py-2">{{ last_ts }}</td></tr>
+      {% endfor %}
+    </tbody></table>
+  </div>
+
+  <h2 class="text-sm font-semibold uppercase text-gray-600">Candidaturas</h2>
+  <div class="overflow-x-auto bg-white rounded-lg shadow">
+    <table class="min-w-full text-sm"><thead class="bg-gray-50 text-gray-600">
+      <tr><th class="text-left px-4 py-2">Vaga</th><th class="text-left px-4 py-2">Total</th></tr>
+    </thead><tbody>
+      {% for slug, total in rows_jobs %}
+        <tr class="border-t"><td class="px-4 py-2 font-mono">{{ slug }}</td><td class="px-4 py-2">{{ total }}</td></tr>
+      {% endfor %}
+    </tbody></table>
+  </div>
+{% endblock %}

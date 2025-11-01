@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if bus %}
+    <div class="mb-4 text-xs text-gray-500">
+      Ônibus: <span class="font-semibold">{{ bus }}</span>
+    </div>
+  {% endif %}
+
+  {% for g in groups %}
+    <div class="mb-6">
+      <h2 class="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wide">
+        {{ g.title }}
+      </h2>
+
+      <div class="space-y-2">
+        {% for item in g['items'] %}
+          <a href="{{ url_for('go', slug=item['slug'], bus=bus) }}"
+             class="block w-full rounded-lg px-4 py-3 bg-white shadow hover:shadow-md transition">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                {% if item['emoji'] %}
+                  <span class="text-xl">{{ item['emoji'] }}</span>
+                {% endif %}
+                <div>
+                  <div class="font-semibold">{{ item['title'] }}</div>
+                  {% if item['desc'] %}
+                    <div class="text-xs text-gray-500">{{ item['desc'] }}</div>
+                  {% endif %}
+                </div>
+              </div>
+              <!-- setinha -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                   fill="currentColor" class="w-5 h-5 text-gray-400">
+                <path fill-rule="evenodd"
+                  d="M5.22 14.78a.75.75 0 0 1 0-1.06L10.94 8 5.22 2.28a.75.75 0 1 1 1.06-1.06l6.25 6.25c.3.3.3.79 0 1.09l-6.25 6.25a.75.75 0 0 1-1.06 0Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

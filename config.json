@@ -1,0 +1,54 @@
+{
+  "brand": {
+    "name": "Viação Reunidas",
+    "logo_text": "Viação Reunidas",
+    "subtitle": "Portal rápido: documentos e vagas"
+  },
+  "groups": [
+    {
+      "title": "Acesso rápido",
+      "items": [
+        {
+          "title": "Trabalhe Conosco",
+          "desc": "Veja vagas abertas",
+          "url": "/vagas",
+          "slug": "vagas",
+          "emoji": "🧑‍💼"
+        },
+        {
+          "title": "Regulamento Interno",
+          "desc": "PDF no Google Drive",
+          "url": "https://drive.google.com/your-doc-1",
+          "slug": "regulamento",
+          "emoji": "📄"
+        }
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "title": "Motorista Categoria D",
+      "slug": "motorista-cat-d",
+      "dept": "Operações",
+      "location": "Goiânia - GO",
+      "description": "Conduzir ônibus urbano, zelar pela segurança dos passageiros e do veículo.",
+      "requirements": [
+        "CNH D ativa",
+        "Curso de Transporte Coletivo de Passageiros",
+        "Experiência mínima de 6 meses"
+      ]
+    },
+    {
+      "title": "Estágio TI - Suporte",
+      "slug": "estagio-ti-suporte",
+      "dept": "Tecnologia da Informação",
+      "location": "Goiânia - GO",
+      "description": "Apoiar no suporte aos usuários, inventário de ativos e abertura de chamados.",
+      "requirements": [
+        "Cursando TI",
+        "Conhecimentos básicos de Windows e redes",
+        "Boa comunicação"
+      ]
+    }
+  ]
+}

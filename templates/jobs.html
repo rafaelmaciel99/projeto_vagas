@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="mb-6">
+    <h1 class="text-xl font-bold">Vagas abertas</h1>
+    {% if bus %}<p class="text-xs text-gray-500 mt-1">Origem: Ônibus {{ bus }}</p>{% endif %}
+  </div>
+  <div class="space-y-3">
+    {% for j in jobs %}
+      <a href="{{ url_for('vaga', slug=j.slug, bus=bus) }}" class="block bg-white rounded-lg shadow hover:shadow-md p-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="font-semibold">{{ j.title }}</div>
+            <div class="text-xs text-gray-500">{{ j.location }} • {{ j.dept }}</div>
+          </div>
+          <span class="text-xs text-gray-500">Detalhes</span>
+        </div>
+      </a>
+    {% else %}
+      <div class="text-sm text-gray-500">No momento não há vagas abertas.</div>
+    {% endfor %}
+  </div>
+{% endblock %}
